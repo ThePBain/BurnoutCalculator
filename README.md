@@ -19,8 +19,8 @@ that score, and gives a tailored recommendation.
 - Risk score is split into four normalized components so no single factor dominates:
   - **Workload** (0-40) - assignments weighted by urgency and difficulty
   - **Sleep** (0-25) - penalty based on average hours slept
-  - **Density** (0–20) - penalty for deadlines clustered within 3 days
-  - **Recovery** (0–15) - penalty for streaks of low-sleep nights
+  - **Density** (0-20) - penalty for deadlines clustered within 3 days
+  - **Recovery** (0-15) - penalty for streaks of low-sleep nights
 - Reports the **top driver** of the score so the advice is actually specific
 - Final report includes a visual progress bar for each component
 - `RiskTier` enum replaces magic strings for safer, typo-proof tier logic
@@ -34,7 +34,7 @@ that score, and gives a tailored recommendation.
 | File | Responsibility |
 | --- | --- |
 | `Student.java` | Holds a name, assignments, and sleep logs |
-| `Assignment.java` | A single assignment (title, days until due, weight 1–5) |
+| `Assignment.java` | A single assignment (title, days until due, weight 1-5) |
 | `SleepLog.java` | One night of sleep (day number, hours) |
 | `RiskTier.java` | Enum for `LOW`, `MODERATE`, `HIGH` |
 | `BurnoutCalculator.java` | Scores the four components and produces the report |
