@@ -1,6 +1,6 @@
 # Burnout Risk Tracker
 
-**Patrick Bain — SE 2070 — April 22, 2026**
+**Patrick Bain - SE 2070 - April 23, 2026**
 
 ## Project Description
 
@@ -17,10 +17,10 @@ that score, and gives a tailored recommendation.
 
 - Tracks a `Student` along with their `Assignment`s and `SleepLog`s
 - Risk score is split into four normalized components so no single factor dominates:
-  - **Workload** (0–40) — assignments weighted by urgency and difficulty
-  - **Sleep** (0–25) — penalty based on average hours slept
-  - **Density** (0–20) — penalty for deadlines clustered within 3 days
-  - **Recovery** (0–15) — penalty for streaks of low-sleep nights
+  - **Workload** (0-40) - assignments weighted by urgency and difficulty
+  - **Sleep** (0-25) - penalty based on average hours slept
+  - **Density** (0–20) - penalty for deadlines clustered within 3 days
+  - **Recovery** (0–15) - penalty for streaks of low-sleep nights
 - Reports the **top driver** of the score so the advice is actually specific
 - Final report includes a visual progress bar for each component
 - `RiskTier` enum replaces magic strings for safer, typo-proof tier logic
