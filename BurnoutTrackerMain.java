@@ -3,8 +3,6 @@ import java.util.Scanner;
 public class BurnoutTrackerMain {
 
     public static void main(String[] args) {
-        // run "java BurnoutTrackerMain --demo" to skip prompts and load sample data,
-        // which is handy for the presentation.
         if (args.length > 0 && args[0].equals("--demo")) {
             runDemo();
             return;
@@ -32,7 +30,6 @@ public class BurnoutTrackerMain {
         System.out.println("Goodbye.");
     }
 
-    // keeps the program going so the user can add more data and rerun the report
     private static void menuLoop(Scanner scanner, Student student) {
         while (true) {
             System.out.println("\nWhat would you like to do next?");
@@ -79,7 +76,6 @@ public class BurnoutTrackerMain {
     }
 
     private static void addSleepLogs(Scanner scanner, Student student, int count) {
-        // continue numbering from whatever day we are already on
         int startDay = student.getSleepLogs().size();
         for (int i = 0; i < count; i++) {
             int dayNumber = startDay + i + 1;

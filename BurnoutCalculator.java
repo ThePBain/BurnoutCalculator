@@ -1,14 +1,5 @@
 import java.util.ArrayList;
 
-/*
- * Burnout risk is calculated from four normalized components.
- * Each component has its own cap so no single factor can dominate:
- *   Workload   0-40   assignments weighted by urgency and difficulty
- *   Sleep      0-25   penalty based on average hours slept
- *   Density    0-20   penalty for clustered deadlines
- *   Recovery   0-15   penalty for consecutive nights of low sleep
- *   Total      0-100
- */
 public class BurnoutCalculator {
     public static final double MAX_WORKLOAD = 40.0;
     public static final double MAX_SLEEP = 25.0;
@@ -43,7 +34,6 @@ public class BurnoutCalculator {
         riskTier = RiskTier.fromScore(riskScore);
     }
 
-    // urgency (how close) times weight (how big), summed across assignments and scaled to 0-40
     private double calculateWorkload() {
         ArrayList<Assignment> list = student.getAssignments();
         double raw = 0;
@@ -61,7 +51,6 @@ public class BurnoutCalculator {
             }
             raw = raw + (urgency * a.getWeight());
         }
-        // raw of ~114 or more maxes out the workload component
         double scaled = raw * 0.35;
         if (scaled > MAX_WORKLOAD) {
             scaled = MAX_WORKLOAD;
@@ -69,7 +58,6 @@ public class BurnoutCalculator {
         return scaled;
     }
 
-    // average sleep across the logged days, scored as a smooth "sleep debt" below an 8-hour target
     private double calculateSleepPenalty() {
         ArrayList<SleepLog> logs = student.getSleepLogs();
         if (logs.size() == 0) {
@@ -109,8 +97,6 @@ public class BurnoutCalculator {
         }
     }
 
-    // recovery time: longest streak of short nights (under 7 hours).
-    // one "good" night (>= 7h) resets the streak because it counts as recovery.
     private double calculateRecoveryPenalty() {
         ArrayList<SleepLog> logs = student.getSleepLogs();
         if (logs.isEmpty()) {
@@ -130,14 +116,11 @@ public class BurnoutCalculator {
             }
         }
 
-        // each short night in the longest streak adds 3.75 points, so 4 in a row maxes the meter
         double penalty = maxStreak * 3.75;
         if (penalty > MAX_RECOVERY) penalty = MAX_RECOVERY;
         return penalty;
     }
 
-    // returns the name of the component contributing the most to the risk score,
-    // based on how close each component is to its own cap
     public String getTopDriver() {
         double wRatio = workloadScore / MAX_WORKLOAD;
         double sRatio = sleepScore / MAX_SLEEP;

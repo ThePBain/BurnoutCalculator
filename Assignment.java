@@ -1,7 +1,7 @@
 public class Assignment {
     private String title;
     private int daysUntilDue;
-    private int weight; // rough difficulty or size rating, 1 to 5
+    private int weight; 
 
     public Assignment(String title, int daysUntilDue, int weight) {
         if (title == null || title.trim().isEmpty()) {

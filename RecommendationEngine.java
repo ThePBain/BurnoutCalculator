@@ -1,9 +1,3 @@
-/*
- * Turns a calculated risk into a short piece of advice.
- * The recommendation is shaped by the tier AND the top driver,
- * so a high-risk student with bad sleep gets different advice
- * than one with clustered deadlines.
- */
 public class RecommendationEngine {
     private BurnoutCalculator calc;
 

@@ -1,9 +1,3 @@
-/*
- * Simple self-contained tests for BurnoutCalculator.
- * Does not require JUnit - run with:
- *     javac *.java
- *     java BurnoutCalculatorTest
- */
 public class BurnoutCalculatorTest {
     private static int passed = 0;
     private static int failed = 0;

@@ -1,10 +1,5 @@
 import java.util.Scanner;
 
-/*
- * Small utility for reading user input that is actually valid.
- * Every method re-prompts instead of throwing so the main program
- * never dies from a typo like "five" or "-3".
- */
 public class InputHelper {
 
     public static String readNonEmptyLine(Scanner sc, String prompt) {
